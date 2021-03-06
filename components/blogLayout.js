@@ -1,8 +1,20 @@
-export default function DefaultLayout({title, children}) {
-    return (
-      <div className={styles.container}>
-          {children}
+export default function BlogLayoutRightSideBar({title, children}) {
+    return <div className="container">
+          <div >
+              sidebar
+          </div>
+          <div>
+              main content
+          </div>
+          <style jsx>
+            {`
+              .container{
+                display: flex;
+                flex-direction: row;
+              }
+              
+              `}
+          </style>
       </div>
-    )
-  }
+}
   

@@ -3,6 +3,7 @@
 
 :root{
   --body-color: #A89EA7;
+  --radius-on-container: 20px;
 }
 html{
   padding: 0;

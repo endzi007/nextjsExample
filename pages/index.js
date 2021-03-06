@@ -1,11 +1,9 @@
 import DefaultLayout from "../components/defaultLayout";
-
+import HomeLayout from '../components/homeLayout';
 export default function Home({title, children, todos}) {
   return (
   <DefaultLayout title="Enis ">
-    <div>
-     Home page
-    </div>
+    <HomeLayout />
   </DefaultLayout>
   );
 }
