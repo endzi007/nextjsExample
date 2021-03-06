@@ -1,21 +1,16 @@
 import DefaultLayout from "../components/defaultLayout";
 
 export default function Home({title, children, todos}) {
-  console.log(todos, "todos in home");
   return (
   <DefaultLayout title="Enis ">
     <div>
-      <ul>
-        {todos.map((todo)=>{
-          return <li key={`${todo.id}_${todo.userId}`}>{todo.title}</li>
-        })}
-      </ul>
+     Home page
     </div>
   </DefaultLayout>
   );
 }
 
-export async function getStaticProps (context){
+/* export async function getStaticProps (context){
   try {
     const res = await fetch("https://jsonplaceholder.typicode.com/todos");
     const data = await res.json();
@@ -28,4 +23,4 @@ export async function getStaticProps (context){
     console.log(error);
   }
  
-}
+} */

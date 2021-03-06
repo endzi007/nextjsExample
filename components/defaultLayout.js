@@ -1,5 +1,7 @@
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
+import Header from './header'
+import Footer from './footer'
 
 export default function DefaultLayout({title, children}) {
   return (
@@ -8,13 +10,13 @@ export default function DefaultLayout({title, children}) {
         <title>{title}</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <Header />
 
-      <main className={styles.main}>
+      <main className={`${styles.main} padding`}>
         {children}
       </main>
-      <footer className={styles.footer}>
-        this is footer areadd
-      </footer>
+
+      <Footer />
     </div>
   )
 }
