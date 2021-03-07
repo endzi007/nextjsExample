@@ -1,37 +1,32 @@
 import Image from "next/image";
+import styles from "../styles/HomePage.module.css";
+import PostList from "./posts/postList";
+import SinglePost from "./posts/singlePost";
+
 export default function HomeComponent() {
     return (
         <div>
-            <section style={{
+            <section className={styles.section} style={{
                 display: "flex",
-
+                justifyContent: "space-between"
             }}>
-                <div
-                    style={{
-                        backgroundColor: "white",
-                        width: "500px",
-                        height: "100px",
-                        boxShadow: "0 0 20px 1px rgba(0,0,0, 0.7)",
-                        borderRadius: "4px",
-                    }}
-                >Card</div>
+                <div className={styles.card}>
+                    <h1 style={{paddingBottom: "5px", marginBottom: "10px"}}>Lorem ipsum</h1>
+                    <h6 style={{padding: "0px", margin: "0px"}}>Lorem ipsumLorem ipsumLorem ipsum</h6>
+                </div>
                 <Image 
                     src="/photos/dog.png"
                     alt="DogPIcture"
-                    width={500}
-                    height={500}
+                    width="500px"
+                    height="500px"
+                    layout="intrinsic"
                 />
             </section>
-            <section>
-                section 1
+            <section className={`${styles.section} fullWidthSection padding`} style={{backgroundColor: "white", minHeight: "500px"}}>
+                <PostList />
             </section>
-            <section>
-                section 1
+            <section className={`${styles.section} fullWidthSection padding`}>
             </section>
-            <section>
-                section 1
-            </section>
-            
         </div>
     );
     

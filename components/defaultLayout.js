@@ -14,9 +14,8 @@ export default function DefaultLayout({title, children}) {
 
       <main className={`${styles.main} padding`}>
         {children}
+        <Footer />
       </main>
-
-      <Footer />
     </div>
   )
 }

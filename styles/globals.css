@@ -4,6 +4,8 @@
 :root{
   --body-color: #A89EA7;
   --radius-on-container: 20px;
+  --layout-padding-left-right: 2rem; 
+  --layout-padding-top-bottom: 2rem;
 }
 html{
   padding: 0;
@@ -28,5 +30,20 @@ a {
 }
 
 .padding{
-  padding: 2rem 10rem;
+  padding: 0 var(--layout-padding-left-right);
+  box-sizing: border-box;
+}
+
+.fullWidthSection{
+  width: calc(100% + var(--layout-padding-left-right) + var(--layout-padding-left-right));
+  margin-left: calc(0rem - var(--layout-padding-left-right));
+}
+
+@media all and (min-width: 768px){
+  :root{
+    --body-color: #A89EA7;
+    --radius-on-container: 20px;
+    --layout-padding-left-right: 12rem; 
+    --layout-padding-top-bottom: 2rem;
+  }
 }
