@@ -1,12 +1,44 @@
 import DefaultLayout from "../components/defaultLayout";
-import HomeLayout from '../components/homeLayout';
 import fs from 'fs';
+import { Grid, makeStyles } from "@material-ui/core";
+import PostSlider from "../components/sliderSection/postSlider";
 
+const useStyles = makeStyles(theme => ({
+    container: {
+        backgroundColor: theme.palette.primary.main
+    },
+    section: {
+      minHeight: "300px",
+      padding: theme.spacing(10)
+    },
+    dogSection: {
+      backgroundColor: "red",
+    },
+    dogSectionInner: {
+      paddingTop: theme.customProps.paddingTop
+    },
+    sliderSection:{},
+    expandableSection:{},
+    reviewSection: {},
+
+}))
 
 export default function Home({title, children, todos}) {
+  const classes = useStyles();
   return (
   <DefaultLayout title="Enis ">
-    <HomeLayout />
+      <Grid container className={classes.container} spacing={8}>
+          <Grid className={`${classes.section} ${classes.dogSection}`} item xs={12}>
+            <Grid container className={`${classes.dogSectionInner}`}>
+                Header top
+            </Grid>
+          </Grid>
+          <Grid className={`${classes.section} ${classes.sliderSection}`} item xs={12}>
+            <PostSlider />
+          </Grid>
+          <Grid className={`${classes.section} ${classes.expandableSection}`} item xs={12}> Expandable pannel section </Grid>
+          <Grid className={`${classes.section} ${classes.reviewSection}`} item xs={12}> Review section </Grid>
+      </Grid>
   </DefaultLayout>
   );
 }

@@ -1,21 +1,33 @@
 import Head from 'next/head'
-import styles from '../styles/DefaultLayout.module.css'
 import Header from './header'
 import Footer from './footer'
+import { Grid, makeStyles } from '@material-ui/core'
+
+const useStyles = makeStyles(theme => ({
+  wrapper: {
+    width: theme.customProps.containerWidth,
+    margin: theme.customProps.margin,
+    position: "relative",
+  }
+}))
 
 export default function DefaultLayout({title, children}) {
+  const classes = useStyles();
   return (
-    <div className={styles.container}>
+    <Grid container className={classes.wrapper}>
       <Head>
         <title>{title}</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Header />
-
-      <main className={`${styles.main} padding`}>
-        {children}
+      <Grid item xs={12}>
+        <Header />
+        <Grid container>
+          <Grid item xs={12}>
+            {children}
+          </Grid>
+        </Grid>
         <Footer />
-      </main>
-    </div>
+      </Grid>
+    </Grid>
   )
 }
