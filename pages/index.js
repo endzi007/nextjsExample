@@ -1,8 +1,8 @@
 import DefaultLayout from "../components/defaultLayout";
 import fs from 'fs';
 import { Grid, makeStyles } from "@material-ui/core";
-import PostSlider from "../components/sliderSection/postSlider";
-
+import PostList from "../components/posts/postList";
+import SinglePost from "../components/posts/singlePost";
 const useStyles = makeStyles(theme => ({
     container: {
         backgroundColor: theme.palette.primary.main
@@ -23,6 +23,14 @@ const useStyles = makeStyles(theme => ({
 
 }))
 
+const setupPosts = ()=>{
+      let arr = [];
+      for (let index = 0; index < 10; index++) {
+        arr.push(<SinglePost />);
+      }
+      return arr;
+}
+
 export default function Home({title, children, todos}) {
   const classes = useStyles();
   return (
@@ -34,9 +42,20 @@ export default function Home({title, children, todos}) {
             </Grid>
           </Grid>
           <Grid className={`${classes.section} ${classes.sliderSection}`} item xs={12}>
-            <PostSlider />
+            <PostList> 
+              {setupPosts()}
+            </PostList>
           </Grid>
-          <Grid className={`${classes.section} ${classes.expandableSection}`} item xs={12}> Expandable pannel section </Grid>
+          <Grid className={`${classes.section} ${classes.expandableSection}`} item xs={12}> 
+            <Grid container>
+              <Grid item xs={6}>
+              <PostList> 
+                {setupPosts()}
+              </PostList>
+              </Grid>
+
+            </Grid>
+          </Grid>
           <Grid className={`${classes.section} ${classes.reviewSection}`} item xs={12}> Review section </Grid>
       </Grid>
   </DefaultLayout>
@@ -65,17 +84,3 @@ export async function getStaticProps(ctx){
   }
 
 }
-/* export async function getStaticProps (context){
-  try {
-    const res = await fetch("https://jsonplaceholder.typicode.com/todos");
-    const data = await res.json();
-    return {
-      props: {
-        todos: data
-      }
-    }
-  } catch (error) {
-    console.log(error);
-  }
- 
-} */
