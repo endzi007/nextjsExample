@@ -1,18 +1,21 @@
 import DefaultLayout from "../components/defaultLayout";
 import fs from 'fs';
-import { Grid, makeStyles } from "@material-ui/core";
+import { Grid, makeStyles, Typography } from "@material-ui/core";
 import PostList from "../components/posts/postList";
 import SinglePost from "../components/posts/singlePost";
+import CollapsableWidget from "../components/collapsablePanel/panelWidget";
+import CollapsablePanel from "../components/collapsablePanel/singlePanel";
 const useStyles = makeStyles(theme => ({
     container: {
         backgroundColor: theme.palette.primary.main
     },
     section: {
       minHeight: "300px",
+      height: "auto",
       padding: theme.spacing(10)
     },
     dogSection: {
-      backgroundColor: "red",
+      backgroundColor: theme.palette.primary.main
     },
     dogSectionInner: {
       paddingTop: theme.customProps.paddingTop
@@ -48,12 +51,19 @@ export default function Home({title, children, todos}) {
           </Grid>
           <Grid className={`${classes.section} ${classes.expandableSection}`} item xs={12}> 
             <Grid container>
-              <Grid item xs={6}>
-              <PostList> 
-                {setupPosts()}
-              </PostList>
+              <Grid item xs={12}>
+              <CollapsableWidget>
+                <CollapsablePanel title="Heading1">
+                <Typography variant="body1">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</Typography>
+                </CollapsablePanel>
+                <CollapsablePanel title="Heading1">
+                <Typography variant="body1">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</Typography>
+                </CollapsablePanel>
+                <CollapsablePanel title="Heading1">
+                  <SinglePost />
+                </CollapsablePanel>
+              </CollapsableWidget>
               </Grid>
-
             </Grid>
           </Grid>
           <Grid className={`${classes.section} ${classes.reviewSection}`} item xs={12}> Review section </Grid>
