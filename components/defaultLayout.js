@@ -21,7 +21,7 @@ export default function DefaultLayout({title, children}) {
       </Head>
       <Grid item xs={12}>
         <Header />
-        <Grid container>
+        <Grid container >
           <Grid item xs={12}>
             {children}
           </Grid>

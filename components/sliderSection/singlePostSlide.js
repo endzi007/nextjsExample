@@ -16,7 +16,7 @@ const useStyles = makeStyles({
   export default function SinglePostSlide() {
     const classes = useStyles();
     return (
-        <Grid item xs={12} sm={3} md={3} lg={3} >
+        <Grid item xs={12} sm={4} md={4} lg={3} >
             <Card className={classes.card}>
                 <CardActionArea>
                     <CardMedia
@@ -36,10 +36,10 @@ const useStyles = makeStyles({
                 </CardActionArea>
                 <CardActions>
                     <Button size="small" color="primary">
-                    Share
+                        SSS
                     </Button>
                     <Button size="small" color="primary">
-                    Learn More
+                        Learn More
                     </Button>
                 </CardActions>
             </Card>

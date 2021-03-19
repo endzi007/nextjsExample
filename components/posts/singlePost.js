@@ -21,9 +21,8 @@ const useStyles = makeStyles({
     height: "150px"
   },
   gridItem: {
-    flexShrink: 0,
-    flexBasis:"25%",
-    flexGrow: 0
+    flexBasis: "25%",
+
   }
 });
 
@@ -43,8 +42,7 @@ export default function SinglePost() {
               Lizard
             </Typography>
             <Typography variant="body2" color="textSecondary" component="p">
-              Lizards are a widespread group of squamate reptiles, with over
-              6,000 species, ranging across all continents except Antarctica
+              Lizards 
             </Typography>
           </CardContent>
         </CardActionArea>

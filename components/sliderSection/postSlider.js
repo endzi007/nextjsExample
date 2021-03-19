@@ -4,16 +4,15 @@ import SinglePostSlide from "./singlePostSlide";
 
 const useStyles = makeStyles(theme => ({
     postSlider: {
-        display: "flex",
         overflowX: "hidden",
-        width: "1400px",
+        width: "100%",
         minHeight: "200px",
     }
 }));
 export default function PostSlider() {
     const classes = useStyles();
     return (
-        <Grid container className={classes.postSlider} spacing={2} wrap="nowrap">
+        <Grid container className={classes.postSlider} wrap="nowrap">
             <SinglePostSlide />
             <SinglePostSlide />
             <SinglePostSlide />

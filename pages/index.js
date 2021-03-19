@@ -7,22 +7,26 @@ import CollapsableWidget from "../components/collapsablePanel/panelWidget";
 import CollapsablePanel from "../components/collapsablePanel/singlePanel";
 const useStyles = makeStyles(theme => ({
     container: {
-        backgroundColor: theme.palette.primary.main
+        backgroundColor: theme.palette.background.paper
     },
     section: {
       minHeight: "300px",
       height: "auto",
-      padding: theme.spacing(10)
-    },
-    dogSection: {
-      backgroundColor: theme.palette.primary.main
+      paddingTop: theme.spacing(8),
+      paddingBottom: theme.spacing(8),
+      paddingLeft: theme.spacing(15),
+      paddingRight: theme.spacing(15)
     },
     dogSectionInner: {
       paddingTop: theme.customProps.paddingTop
     },
-    sliderSection:{},
+    sliderSection:{
+      backgroundColor: "#fff"
+    },
     expandableSection:{},
-    reviewSection: {},
+    reviewSection: {
+      backgroundColor: "#fff"
+    },
 
 }))
 
@@ -38,7 +42,7 @@ export default function Home({title, children, todos}) {
   const classes = useStyles();
   return (
   <DefaultLayout title="Enis ">
-      <Grid container className={classes.container} spacing={8}>
+      <Grid container className={classes.container}>
           <Grid className={`${classes.section} ${classes.dogSection}`} item xs={12}>
             <Grid container className={`${classes.dogSectionInner}`}>
                 Header top

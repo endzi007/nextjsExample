@@ -42,7 +42,7 @@ export default function PostList({children}) {
   return (
       <div className={classes.wrapper}>
 
-      <Grid ref={myRef} container className={classes.gridContainer} spacing={1}>
+      <Grid container ref={myRef} className={classes.gridContainer} spacing={1}>
        {children}
       </Grid>
         <Fab
