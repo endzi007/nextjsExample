@@ -5,6 +5,7 @@ import PostList from "../components/posts/postList";
 import SinglePost from "../components/posts/singlePost";
 import CollapsableWidget from "../components/collapsablePanel/panelWidget";
 import CollapsablePanel from "../components/collapsablePanel/singlePanel";
+import Image from "next/image";
 const useStyles = makeStyles(theme => ({
     container: {
         backgroundColor: theme.palette.background.paper
@@ -14,8 +15,9 @@ const useStyles = makeStyles(theme => ({
       height: "auto",
       paddingTop: theme.spacing(8),
       paddingBottom: theme.spacing(8),
-      paddingLeft: theme.spacing(15),
-      paddingRight: theme.spacing(15)
+      paddingLeft: theme.spacing(20),
+      paddingRight: theme.spacing(20),
+      position:"relative"
     },
     dogSectionInner: {
       paddingTop: theme.customProps.paddingTop
@@ -27,6 +29,12 @@ const useStyles = makeStyles(theme => ({
     reviewSection: {
       backgroundColor: "#fff"
     },
+    headerImage:{
+      position: "absolute",
+      bottom: 0,
+      right: 0,
+      display: "block"
+    }
 
 }))
 
@@ -45,7 +53,16 @@ export default function Home({title, children, todos}) {
       <Grid container className={classes.container}>
           <Grid className={`${classes.section} ${classes.dogSection}`} item xs={12}>
             <Grid container className={`${classes.dogSectionInner}`}>
-                Header top
+                <Image 
+                  src="/photos/dogSectionImage.png"
+                  width="100%"
+                  height="100%"
+                  style={{
+                    position: "absolute",
+                    bottom: 0,
+                    right: 0
+                  }}
+                />
             </Grid>
           </Grid>
           <Grid className={`${classes.section} ${classes.sliderSection}`} item xs={12}>
@@ -55,7 +72,7 @@ export default function Home({title, children, todos}) {
           </Grid>
           <Grid className={`${classes.section} ${classes.expandableSection}`} item xs={12}> 
             <Grid container>
-              <Grid item xs={12}>
+              <Grid item xs={12} sm={6}>
               <CollapsableWidget>
                 <CollapsablePanel title="Heading1">
                 <Typography variant="body1">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</Typography>
@@ -67,6 +84,9 @@ export default function Home({title, children, todos}) {
                   <SinglePost />
                 </CollapsablePanel>
               </CollapsableWidget>
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                  PICTURE PLACEHOLDER
               </Grid>
             </Grid>
           </Grid>

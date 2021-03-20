@@ -1,8 +1,11 @@
 import { useEffect, useRef, useState } from "react";
-import { Grid, makeStyles, Typography, IconButton } from "@material-ui/core";
+import { Grid, makeStyles, Typography, IconButton, Paper, Card } from "@material-ui/core";
 import { Add, Remove } from "@material-ui/icons";
 
 const useStyles = makeStyles((theme) => ({
+  container: {
+    marginBottom: theme.spacing(1)
+  },
   wrapper: {
     cursor: "pointer",
     display: "flex",
@@ -20,6 +23,9 @@ const useStyles = makeStyles((theme) => ({
   inner: {
     display: "flex",
     flexDirection: "column"
+  },
+  paper: {
+    padding: theme.spacing(2)
   }
 }));
 
@@ -46,19 +52,20 @@ export default function CollapsablePanel({ title, children, passedStyle }) {
   }, []);
 
   return (
-    <Grid container>
+    <Grid container className={classes.container}>
       <Grid item xs={12} className={classes.inner}>
-        <div
+        <Paper
           className={classes.wrapper}
           onClick={(e) => {
             setOpen(!open);
           }}
+          elevation={3}
         >
-          <Typography variant="h4">{title}</Typography>
+          <Typography variant="h6">{title}</Typography>
           <IconButton color="primary">
             {!open ? <Add /> : <Remove />}
           </IconButton>
-        </div>
+        </Paper>
         <div
           className={classes.transitionClass}
           style={{
@@ -67,9 +74,9 @@ export default function CollapsablePanel({ title, children, passedStyle }) {
           }}
           ref={myRef}
         >
-          <div style={{ height: "auto" }} ref={innerRef}>
+          <Paper elevation={0} className={classes.paper} style={{ height: "auto" }} ref={innerRef}>
             {children}
-          </div>
+          </Paper>
         </div>
       </Grid>
     </Grid>

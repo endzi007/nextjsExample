@@ -22,7 +22,8 @@ const useStyles = makeStyles({
   },
   gridItem: {
     flexBasis: "25%",
-
+    flexGrow: 0,
+    flexShrink: 0
   }
 });
 

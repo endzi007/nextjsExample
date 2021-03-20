@@ -23,6 +23,15 @@ const theme = createMuiTheme({
           colorTransparent: {
               boxShadow: "none"
           }
+      },
+      MuiPaper: {
+        rounded: {
+          borderRadius: "0px",
+          backgroundColor: "white",
+        },
+        elevation1: {
+          boxShadow: "0px 5px 12px 3px rgba(0, 0, 0, 0.05)"
+        }
       }
   },
   customProps: {
