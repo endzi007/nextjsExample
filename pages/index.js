@@ -1,11 +1,11 @@
 import DefaultLayout from "../components/defaultLayout";
 import fs from 'fs';
-import { Grid, makeStyles, Typography } from "@material-ui/core";
+import { Grid, makeStyles, Typography, CardMedia} from "@material-ui/core";
 import PostList from "../components/posts/postList";
 import SinglePost from "../components/posts/singlePost";
 import CollapsableWidget from "../components/collapsablePanel/panelWidget";
 import CollapsablePanel from "../components/collapsablePanel/singlePanel";
-import Image from "next/image";
+
 const useStyles = makeStyles(theme => ({
     container: {
         backgroundColor: theme.palette.background.paper
@@ -15,17 +15,35 @@ const useStyles = makeStyles(theme => ({
       height: "auto",
       paddingTop: theme.spacing(8),
       paddingBottom: theme.spacing(8),
-      paddingLeft: theme.spacing(20),
-      paddingRight: theme.spacing(20),
-      position:"relative"
+      paddingLeft: "6vw",
+      paddingRight: "6vw",
+      position:"relative",
+      [theme.breakpoints.down("xs")]:{
+        paddingTop: theme.spacing(4),
+        paddingBottom: theme.spacing(4),
+      }
     },
     dogSectionInner: {
-      paddingTop: theme.customProps.paddingTop
+      paddingTop: theme.customProps.paddingTop,
+      position: "relative",
+      height: "100%",
+      "& div": {
+        all: "unset!important",
+        backgroundColor: "red",
+        height: "100%!important",
+        width: "100%!important",
+        border:"1px solid black",
+        position: "absolute!important",
+        right: 0,
+        bottom: 0
+      }
     },
     sliderSection:{
       backgroundColor: "#fff"
     },
-    expandableSection:{},
+    expandableSection:{
+      position: "relative"
+    },
     reviewSection: {
       backgroundColor: "#fff"
     },
@@ -33,8 +51,29 @@ const useStyles = makeStyles(theme => ({
       position: "absolute",
       bottom: 0,
       right: 0,
-      display: "block"
-    }
+      height: "auto",
+      width: "50%"
+    },
+    pictureHolder:{
+      minHeight: "100%",
+    },
+    dogPicture:{
+      width: "50%",
+      height: "auto",
+      maxWidth: "50%",
+      maxHeight: "100%",
+      position: "absolute",
+      objectFit: "contain",
+      right: "0",
+      top: "50%",
+      transform: "translateY(-50%)",
+      [theme.breakpoints.down("xs")]:{
+        width: "100%",
+        maxWidth: "100%",
+        position: "relative",
+        objectFit: "cover"
+      }
+    },
 
 }))
 
@@ -53,16 +92,10 @@ export default function Home({title, children, todos}) {
       <Grid container className={classes.container}>
           <Grid className={`${classes.section} ${classes.dogSection}`} item xs={12}>
             <Grid container className={`${classes.dogSectionInner}`}>
-                <Image 
-                  src="/photos/dogSectionImage.png"
-                  width="100%"
-                  height="100%"
-                  style={{
-                    position: "absolute",
-                    bottom: 0,
-                    right: 0
-                  }}
-                />
+              <CardMedia 
+                image="/photos/dog.png"
+                height="auto"
+              />
             </Grid>
           </Grid>
           <Grid className={`${classes.section} ${classes.sliderSection}`} item xs={12}>
@@ -85,8 +118,8 @@ export default function Home({title, children, todos}) {
                 </CollapsablePanel>
               </CollapsableWidget>
               </Grid>
-              <Grid item xs={12} sm={6}>
-                  PICTURE PLACEHOLDER
+              <Grid className={classes.pictureHolder} item xs={12} sm={6}>
+                  <img className={classes.dogPicture} src="/photos/russianTerrier.png" alt="Russian Terrier"/>
               </Grid>
             </Grid>
           </Grid>

@@ -17,6 +17,9 @@ const theme = createMuiTheme({
       paper: '#ECE7EE',
       default:"#A89EA7"
     },
+    text: {
+      primary: "#686667"
+    }
   },
   overrides:{
       MuiAppBar:{
