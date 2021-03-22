@@ -1,14 +1,18 @@
 import DefaultLayout from "../components/defaultLayout";
 import fs from 'fs';
-import { Grid, makeStyles, Typography, CardMedia} from "@material-ui/core";
+import { Grid, makeStyles, Typography, CardMedia, Paper} from "@material-ui/core";
 import PostList from "../components/posts/postList";
 import SinglePost from "../components/posts/singlePost";
 import CollapsableWidget from "../components/collapsablePanel/panelWidget";
 import CollapsablePanel from "../components/collapsablePanel/singlePanel";
+import { useEffect } from "react";
 
 const useStyles = makeStyles(theme => ({
     container: {
-        backgroundColor: theme.palette.background.paper
+        backgroundColor: theme.palette.background.paper,
+        marginTop: "8vh",
+        paddingTop: "100px",
+        position: "relative"
     },
     section: {
       minHeight: "300px",
@@ -26,17 +30,7 @@ const useStyles = makeStyles(theme => ({
     dogSectionInner: {
       paddingTop: theme.customProps.paddingTop,
       position: "relative",
-      height: "100%",
-      "& div": {
-        all: "unset!important",
-        backgroundColor: "red",
-        height: "100%!important",
-        width: "100%!important",
-        border:"1px solid black",
-        position: "absolute!important",
-        right: 0,
-        bottom: 0
-      }
+      minHeight: "60vh"
     },
     sliderSection:{
       backgroundColor: "#fff"
@@ -46,13 +40,6 @@ const useStyles = makeStyles(theme => ({
     },
     reviewSection: {
       backgroundColor: "#fff"
-    },
-    headerImage:{
-      position: "absolute",
-      bottom: 0,
-      right: 0,
-      height: "auto",
-      width: "50%"
     },
     pictureHolder:{
       minHeight: "100%",
@@ -74,6 +61,25 @@ const useStyles = makeStyles(theme => ({
         objectFit: "cover"
       }
     },
+    headerDogPicture: {
+      position: "absolute",
+      bottom: "50%",
+      right: "0",
+      height: "auto",
+      width: "50%",
+      maxHeight: "200%",
+      transform: "translateY(50%)",
+      objectFit: "scale-down",
+      overflow: "hidden"
+    },
+    headerCard: {
+      position: "absolute",
+      left: 0,
+      top: 0,
+      minHeight: "200px",
+      padding: theme.spacing(3),
+      maxWidth: "50ch", 
+    }
 
 }))
 
@@ -83,19 +89,38 @@ const setupPosts = ()=>{
         arr.push(<SinglePost />);
       }
       return arr;
+  
 }
+
 
 export default function Home({title, children, todos}) {
   const classes = useStyles();
+  
+useEffect(()=>{
+  fetch('http://localhost:3000/data/test.json').then((data)=>{
+    return data.json();
+  }).then((posts)=>{
+    console.log(posts);
+  }).catch((e)=>{
+    console.log(e)
+  });
+}, [])
   return (
   <DefaultLayout title="Enis ">
       <Grid container className={classes.container}>
           <Grid className={`${classes.section} ${classes.dogSection}`} item xs={12}>
             <Grid container className={`${classes.dogSectionInner}`}>
-              <CardMedia 
-                image="/photos/dog.png"
-                height="auto"
-              />
+              <Grid className={classes.pictureHolder} item xs={12}>
+                    <Paper className={classes.headerCard}>
+                      <Typography variant="h1" color="primary">
+                        Enisss 
+                      </Typography>
+                      <Typography variant="body1" color="textPrimary">
+                      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                      </Typography>
+                    </Paper>
+                    <img className={classes.headerDogPicture} src="/photos/dog.png" alt="Picture of dog"/>
+                </Grid>
             </Grid>
           </Grid>
           <Grid className={`${classes.section} ${classes.sliderSection}`} item xs={12}>
