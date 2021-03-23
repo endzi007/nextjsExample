@@ -1,11 +1,12 @@
 import DefaultLayout from "../components/defaultLayout";
 import fs from 'fs';
-import { Grid, makeStyles, Typography, CardMedia, Paper} from "@material-ui/core";
+import { Grid, makeStyles, Typography, Paper} from "@material-ui/core";
 import PostList from "../components/posts/postList";
 import SinglePost from "../components/posts/singlePost";
 import CollapsableWidget from "../components/collapsablePanel/panelWidget";
 import CollapsablePanel from "../components/collapsablePanel/singlePanel";
 import { useEffect } from "react";
+import SlidersData from "../data/home/sliderSection.json";
 
 const useStyles = makeStyles(theme => ({
     container: {
@@ -84,10 +85,14 @@ const useStyles = makeStyles(theme => ({
 }))
 
 const setupPosts = ()=>{
-      let arr = [];
+/*       let arr = [];
+      
       for (let index = 0; index < 10; index++) {
         arr.push(<SinglePost />);
       }
+      return arr; */
+
+      let arr = SlidersData.map(slider => <SinglePost />);
       return arr;
   
 }
@@ -97,7 +102,11 @@ export default function Home({title, children, todos}) {
   const classes = useStyles();
   
 useEffect(()=>{
-  fetch('http://localhost:3000/data/test.json').then((data)=>{
+  fetch('http://localhost:3000/data/test.json', {
+    body:{
+
+    }
+  }).then((data)=>{
     return data.json();
   }).then((posts)=>{
     console.log(posts);
